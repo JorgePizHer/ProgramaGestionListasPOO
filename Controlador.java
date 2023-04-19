@@ -23,7 +23,6 @@ public class Controlador {
 			seleccion = Salida.mostrarMenu();
 
 			temporadaPrimavera2023.gestionarAccion(seleccion, nombre, demografia, genero, episodios, valoracion);
-			System.out.println(temporadaPrimavera2023.toString());
 			System.out.println("");
 			
 		} while (seleccion > 0 || seleccion < 6);
