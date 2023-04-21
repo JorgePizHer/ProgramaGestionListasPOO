@@ -3,12 +3,36 @@ import java.util.Scanner;
 
 public class Salida {
 
+	/**
+	 * La clase salida contiene los metodos que seran mostrados por consola,
+	 * principalmente para interaccion con el usuario.
+	 * 
+	 * El metodo presentacion muestra un mensaje de bienvenida al usuario cuando
+	 * inicia el programa. Pregunta al usuario que accion quiere realizar.
+	 * 
+	 * @author Jorge Pizarro
+	 * @param texto El mensaje de bienvenida al usuario.
+	 * @version 1.4
+	 */
+
 	public static void presentacion(String texto) {
 
 		System.out.println(texto);
 		System.out.println("");
 
 	}
+
+	/**
+	 * La clase salida contiene los metodos que seran mostrados por consola,
+	 * principalmente para interaccion con el usuario.
+	 * 
+	 * El metodo mostrarMenu muestra el menu principal del programa, donde el
+	 * usuario puede seleccionar la accion que quiere realizar.
+	 * 
+	 * @author Jorge Pizarro
+	 * @return La opcion del menu seleccionada por el usuario
+	 * @version 1.4
+	 */
 
 	public static int mostrarMenu() {
 		int seleccion = 0;
@@ -34,6 +58,18 @@ public class Salida {
 
 		return seleccion;
 	}
+
+	/**
+	 * La clase salida contiene los metodos que seran mostrados por consola,
+	 * principalmente para interaccion con el usuario.
+	 * 
+	 * El metodo menuModificar muestra las diferentes opciones que hay a la hora de
+	 * modificar un objeto de la lista.
+	 * 
+	 * @author Jorge Pizarro
+	 * @return La opcion del menu seleccionada por el usuario
+	 * @version 1.4
+	 */
 
 	public static int menuModificar() {
 
@@ -62,6 +98,18 @@ public class Salida {
 
 		return seleccion;
 	}
+
+	/**
+	 * La clase salida contiene los metodos que seran mostrados por consola,
+	 * principalmente para interaccion con el usuario.
+	 * 
+	 * El metodo menuBuscar muestra las diferentes opciones que hay a la hora de
+	 * buscar un objeto en la lista.
+	 * 
+	 * @author Jorge Pizarro
+	 * @return La opcion del menu seleccionada por el usuario
+	 * @version 1.4
+	 */
 
 	public static int menuBuscar() {
 
