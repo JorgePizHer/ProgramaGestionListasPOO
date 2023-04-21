@@ -37,12 +37,36 @@ public class ListaAnimes {
 		return "ListaAnimes [usuario=" + usuario + ", listaAnimes=" + listaAnimes + "]";
 	}
 
+	/**
+	 * La clase ListaAnimes contiene todos los metodos que trabajaran con el
+	 * ArrayList ListaAnimes, que almacenara todos los objetos de la clase Anime que
+	 * se creen.
+	 * 
+	 * En el metodo gestionarAccion, segun la seleccion del usuario en el menu, se
+	 * ejecuta el metodo asociado a dicha seleccion.
+	 * 
+	 * @author Jorge Pizarro
+	 * @param seleccion  El case del switch que se ejecutara, que se corresponde con
+	 *                   la opción del menu seleccionada por el usuario.
+	 * @param nombre     Nombre de cada uno de los animes que se guardan como
+	 *                   objetos en la lista.
+	 * @param demografia Demografia de cada uno de los animes que se guardan como
+	 *                   objetos en la lista.
+	 * @param genero     Genero de cada uno de los animes que se guardan como
+	 *                   objetos en la lista.
+	 * @param episodios  Numero de episodios de cada uno de los animes que se
+	 *                   guardan como objetos en la lista.
+	 * @param valoracion Valoracion que el usuario asigna a cada uno de los animes
+	 *                   que se guardan como objetos en la lista.
+	 * @version 1.4
+	 */
+
 	public void gestionarAccion(int seleccion, String nombre, String demografia, String genero, int episodios,
 			int valoracion) {
 
 		try {
 
-			switch (seleccion) {
+			switch (seleccion) { // Switch para ejecutar las acciones que especifique el usuario
 			case 1:
 				addAnime(nombre, demografia, genero, episodios, valoracion);
 				break;
@@ -66,6 +90,28 @@ public class ListaAnimes {
 			e.printStackTrace();
 		}
 	}
+
+	/**
+	 * La clase ListaAnimes contiene todos los metodos que trabajaran con el
+	 * ArrayList ListaAnimes, que almacenara todos los objetos de la clase Anime que
+	 * se creen.
+	 * 
+	 * El metodo addAnime interactua con el usuario por consola para que este añada
+	 * objetos a la lista con sus respectivos datos.
+	 * 
+	 * @author Jorge Pizarro
+	 * @param nombre     Nombre que da el usuario a cada uno de los animes que se
+	 *                   guardan como objetos en la lista.
+	 * @param demografia Demografia que el usuario asigna a cada uno de los animes
+	 *                   que se guardan como objetos en la lista.
+	 * @param genero     Genero que el usuario asigna a cada uno de los animes que
+	 *                   se guardan como objetos en la lista.
+	 * @param episodios  Numero de episodios que el usuario asigna a cada uno de los
+	 *                   animes que se guardan como objetos en la lista.
+	 * @param valoracion Valoracion que el usuario asigna a cada uno de los animes
+	 *                   que se guardan como objetos en la lista.
+	 * @version 1.4
+	 */
 
 	public void addAnime(String nombre, String demografia, String genero, int episodios, int valoracion) {
 
@@ -93,18 +139,39 @@ public class ListaAnimes {
 			} catch (InputMismatchException e) {
 				System.out.println("Error. Debe introducir un número para número de episodios o valoración.");
 			}
-			listaAnimes.add(new Anime(nombre, demografia, genero, episodios, valoracion));
+			listaAnimes.add(new Anime(nombre, demografia, genero, episodios,
+					valoracion)); /*
+									 * .add para que los datos introducidos por el usuario se guarden dentro // de
+									 * la lista de objetos como un nuevo objeto de la clase Anime
+									 */
 
 			System.out.println("Nombre: " + nombre + " / " + " Demografía: " + demografia + " / " + " Género: " + genero
 					+ " / " + " Número de episodios: " + episodios + " / " + " Valoración: " + valoracion);
 			System.out.println("");
-			Collections.sort(listaAnimes, new Comparador());
+			Collections.sort(listaAnimes, new Comparador()); // Llamada al método compare para ordenar la lista por
+																// valoración descendente
 			System.out.println(listaAnimes.toString());
 
 		} catch (Exception e) {
 			System.out.println("Error desconocido. Pruebe otra vez.");
 		}
 	}
+
+	/**
+	 * La clase ListaAnimes contiene todos los metodos que trabajaran con el
+	 * ArrayList ListaAnimes, que almacenara todos los objetos de la clase Anime que
+	 * se creen.
+	 * 
+	 * En el metodo modificarAnime el usuario introduce el nombre del objeto de la
+	 * clase Anime que desea modificar y podra modificar todos los elementos de
+	 * dicho objeto o solo uno de ellos, segun su eleccion.
+	 * 
+	 * @author Jorge Pizarro
+	 * @param nombreAnime el nombre del anime que el usuario introduce y que por
+	 *                    tanto desea modificar, ya sea al completo o solo alguno de
+	 *                    sus campos.
+	 * @version 1.4
+	 */
 
 	public void modificarAnime(String nombreAnime) {
 
@@ -129,9 +196,10 @@ public class ListaAnimes {
 					System.out.println("Nombre del anime que desea modificar: ");
 					nombreAnime = lector.nextLine();
 
-					for (Anime item : listaAnimes)
+					for (Anime item : listaAnimes) // Bucle for each para realizar la búsqueda dentro de la lista
 
-						if (item.getNombre().equals(nombreAnime)) {
+						if (item.getNombre().equals(nombreAnime)) { // Uso de los getters y setters para modificar los
+																	// datos
 
 							System.out.println(item);
 
@@ -305,6 +373,28 @@ public class ListaAnimes {
 		}
 	}
 
+	/**
+	 * La clase ListaAnimes contiene todos los metodos que trabajaran con el
+	 * ArrayList ListaAnimes, que almacenara todos los objetos de la clase Anime que
+	 * se creen.
+	 * 
+	 * En el metodo BuscarAnime el usuario puede buscar un objeto de la clase Anime
+	 * dentro de la lista por cualquiera de sus campos.
+	 * 
+	 * @author Jorge Pizarro
+	 * @param nombreAnime Nombre del objeto de la clase Anime que el usuario desea
+	 *                    buscar.
+	 * @param demografia  Demografia del objeto de la clase Anime que el usuario
+	 *                    desea buscar.
+	 * @param genero      Genero del objeto de la clase Anime que el usuario desea
+	 *                    buscar.
+	 * @param episodios   Numero de episodios del objeto de la clase anime que el
+	 *                    usuario desea buscar.
+	 * @param valoracion  Valoracion del objeto de la clase anime que el usuario
+	 *                    desea buscar.
+	 * @version 1.4
+	 */
+
 	public void BuscarAnime(String nombreAnime, String demografia, String genero, int episodios, int valoracion) {
 
 		int seleccion;
@@ -420,12 +510,26 @@ public class ListaAnimes {
 		}
 	}
 
+	/**
+	 * La clase ListaAnimes contiene todos los metodos que trabajaran con el
+	 * ArrayList ListaAnimes, que almacenara todos los objetos de la clase Anime que
+	 * se creen.
+	 * 
+	 * En el metodo eliminarAnime se interactua con el usuario para que este
+	 * introduzca el nombre del anime que, previa confirmacion por parte del
+	 * usuario, sera eliminado.
+	 * 
+	 * @author Jorge Pizarro
+	 * @param nombreAnime el nombre del objeto de la clase Anime que el usuario
+	 *                    introduce y que en principio quiere eliminar.
+	 * @version 1.4
+	 */
+
 	public void eliminarAnime(String nombreAnime) {
 
 		String confirmarAccion;
 
-	try {
-		
+		try {
 
 			Scanner lector = new Scanner(System.in);
 
@@ -435,17 +539,19 @@ public class ListaAnimes {
 			System.out.println("¿Está seguro de eliminar " + nombreAnime + "? Responda SI o NO: ");
 			confirmarAccion = lector.nextLine();
 
-			
-			
 			if (confirmarAccion.equals("SI") || confirmarAccion.equals("Si") || confirmarAccion.equals("si")
-					|| confirmarAccion.equals("Sí") || confirmarAccion.equals("sí")) {
+					|| confirmarAccion.equals("Sí") || confirmarAccion.equals("sí")) { // Paso intermendio de
+																						// confirmación para evitar
+																						// eliminar objetos por error
 
 				for (Anime item : listaAnimes) {
 
 					if (item.getNombre().equals(nombreAnime)) {
 
-						listaAnimes.remove(item);
+						listaAnimes.remove(item); // .remove para eliminar el objeto buscado de la lista tras la
+													// confirmación
 						System.out.println("Acción realizada con éxito");
+						System.out.println(listaAnimes.toString());
 					}
 				}
 
@@ -454,11 +560,20 @@ public class ListaAnimes {
 				System.out.println("Acción cancelada. Vuelta al menú principal.");
 			}
 
+			Collections.sort(listaAnimes, new Comparador());
 
-				Collections.sort(listaAnimes, new Comparador());
-				
-	} catch (ConcurrentModificationException e) {
-		System.out.println(listaAnimes.toString());
-	}
+		} catch (ConcurrentModificationException e) {
+			System.out.println(
+					"¿Qué desea realizar a continuación?"); /*
+															 * En este caso y de forma excepcional no aparece un mensaje
+															 * de error como tal, pues el error salta unas veces sí y
+															 * otras no y no he conseguido identificar la manera de
+															 * solucionarlo. Pero el caso es que ejecuta todas las
+															 * acciones correctamente independientemente de que salte el
+															 * error o no
+															 */
+
+		}
+
 	}
 }
